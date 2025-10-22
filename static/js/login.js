@@ -91,8 +91,9 @@ function Check_Session(){
 
 window.addEventListener("DOMContentLoaded" , ()=>{
     Check_Session().then(data=>{
-        if(data.Success===true){
-            window.location.href = `/${data.role}`
-        }
+        console.log(data)
+        // if(data.Success===true){
+        //     window.location.href = `/${data.role}`
+        // }
     })
 })
