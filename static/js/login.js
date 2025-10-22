@@ -88,12 +88,11 @@ function Check_Session(){
     }).then(res=>res.json())
 }
 
-
 window.addEventListener("DOMContentLoaded" , ()=>{
     Check_Session().then(data=>{
-        console.log(data)
-        // if(data.Success===true){
-        //     window.location.href = `/${data.role}`
-        // }
+        
+        if(data.Success===true){
+            window.location.href = `/${data.data.role}`
+        }
     })
 })
