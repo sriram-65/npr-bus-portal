@@ -19,7 +19,8 @@ let cwg = document.getElementById("cwg")
 
 cwg.onclick = async function(){
 
-
+       cwg.innerText = "Processing..."
+       cwg.disabled = true
         const provider = new GoogleAuthProvider()
 
          try { 
@@ -38,6 +39,7 @@ cwg.onclick = async function(){
                 SetCookie(data.role).then(result=>{
                     if(result.Success==true){
                      if(data.new==true){
+                        
                         localStorage.setItem("new" , "yes-new")
                      }
                     else{
@@ -51,6 +53,10 @@ cwg.onclick = async function(){
                     else{
                         alert("Failed to login")
                     }
+                }).catch(e=>{
+                      alert("Unexpected Error...")
+                      cwg.innerText = "Continue With Google"
+                      cwg.disabled = false
                 })
                
             }
@@ -59,7 +65,9 @@ cwg.onclick = async function(){
             }
           
         } catch (e) {
-            console.error("Google login error:", e);
+             cwg.innerText = "Continue With Google"
+             cwg.disabled = false
+            // console.error("Google login error:", e);
             alert("Google login failed. Please try again.");
         }
 }
@@ -73,3 +81,16 @@ function SetCookie(role){
         body:JSON.stringify({role:role})
     }).then(res=>res.json())
 }
+
+function Check_Session(){
+    return fetch(`${API_BASE}/api/`).then(res=>res.json())
+}
+
+
+window.addEventListener("DOMContentLoaded" , ()=>{
+    Check_Session().then(data=>{
+        if(data.Success===true){
+            window.location.href = `/${data.role}`
+        }
+    })
+})
