@@ -83,7 +83,9 @@ function SetCookie(role){
 }
 
 function Check_Session(){
-    return fetch(`${API_BASE}/api/`).then(res=>res.json())
+    return fetch(`${API_BASE}/api/` , {
+        credentials:"include"
+    }).then(res=>res.json())
 }
 
 
