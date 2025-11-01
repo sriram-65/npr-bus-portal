@@ -16,6 +16,19 @@ let main = document.querySelector("main")
 let sname = document.getElementById("sname")
 let today = document.getElementById("today")
 
+
+document.getElementById("logout").onclick = function(){
+    document.getElementById("logout").disabled = true
+    fetch(`${API_BASE}/api/logout` , {credentials:"include"}).then(res=>res.json()).then(data=>{
+        if(data.Success==true){
+            window.location.reload = '/'
+        }
+        else{
+            alert("Failed to Logout")
+    document.getElementById("logout").disabled = false
+        }
+    })
+}
 function Check_Me(){
     return fetch(`${API_BASE}/api/auth/me` , {
         credentials:"include"
