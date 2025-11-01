@@ -1,4 +1,4 @@
-let API_BASE = "http://localhost:5000"
+let API_BASE = "https://npr-bus-backend.vercel.app/"
 
 let eotp = document.getElementById("submit-otp")
 let otpInput = document.getElementById("oinp")
