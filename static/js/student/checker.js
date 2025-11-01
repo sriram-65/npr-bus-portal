@@ -1,4 +1,4 @@
-let API_BASE = 'https://npr-bus-backend.vercel.app'
+let API_BASE = "http://localhost:5000"
 
 let askdeatils = document.getElementById("ask-deatils")
 
@@ -104,10 +104,7 @@ function ALLCHECK(){
         localStorage.setItem("busno" , response.data.Bus_No)
     if(response.data.Updated==true){
          CheckPlaceholder().then(data=>{
-            if(data.Success==false){
-                eotp.disabled= true
-            }
-    if(data.Success==false && data.preError=='nf'){
+             if(data.Success==false && data.preError=='nf'){
         CreatePlaceHolder(response.data.Uid).then(result=>{
             if(result.Success==true){
                 sname.innerText = result.data.name
@@ -116,6 +113,16 @@ function ALLCHECK(){
             }
         })
     }
+    
+            if(data.data.Started==='f'){
+                document.getElementById("closed").style.display  = 'block'
+                document.getElementById("sinfo").style.display  = 'none'
+            }
+            
+            if(data.Success==false){
+                eotp.disabled= true
+            }
+   
     else{
             teacher.innerText = data.data.Attendanced_By?"Attendanced By" +" " + data.data.Attendanced_By:"----"
             if(data.data.otp_verfied==true){

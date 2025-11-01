@@ -1,4 +1,4 @@
-let API_BASE = "https://npr-bus-backend.vercel.app"
+let API_BASE = "http://localhost:5000"
 let sotp = document.getElementById("sotp")
 
 function Formatedate(){
@@ -43,8 +43,8 @@ sotp.onclick = function(){
             title: "Session was Already Started",
             text: `Started By : ${data.data.Admin_Name}`,
             footer: res.data._Email === data.data.Admin_Email
-                ? '<a href="#">View Your Session</a>'
-                : '<a href="#">View Students</a>'
+                ? `<a href=${API_BASE}/api/admin/session/create/${data.data.Admin_uid}/${Formatedate()}>View Your Session</a>`
+                : `<a href=${API_BASE}/api/admin/view-students/${data.data.busno}/${Formatedate()}>View Students</a>`
             });
            sotp.disabled = false
 

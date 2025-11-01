@@ -1,4 +1,4 @@
-let API_BASE = "https://npr-bus-backend.vercel.app"
+let API_BASE = "http://localhost:5000"
 
 let eotp = document.getElementById("submit-otp")
 let otpInput = document.getElementById("oinp")
@@ -33,11 +33,24 @@ function formate_date(){
 
 
 eotp.onclick = function(){
+   
 
+   Send_Otp_code()
+}
+
+
+function Send_Otp_code(){
+    eotp.innerText = 'Processing...'
+    eotp.disabled = true
     Verfiy_OTP().then(data=>{
         if(data.Success===true){
               let myModalEl = document.getElementById('otpModal');
-              bootstrap.Modal.getInstance(myModalEl).hide();
+              eotp.innerText = 'Success ✅✅'
+              eotp.disabled = false
+              setTimeout(()=>{
+                bootstrap.Modal.getInstance(myModalEl).hide();
+              } , 1300)
+
               SetStudentStatus()
         }
         else{
@@ -46,11 +59,19 @@ eotp.onclick = function(){
     })
 }
 
+
+otpInput.addEventListener("keydown" , (e)=>{
+    if(e.key==='Enter'){
+      Send_Otp_code()
+    }
+})
+
+
 function SetStudentStatus(){
     FetchStudentsStatus().then(data=>{
         if(data.data.otp_verfied===true){
            marker.innerText = "Present"
-                eotp.style.display = 'none'
+                document.getElementById("otpModalLabel").style.display = 'none'
                 document.getElementById("design").classList.add(
                     "alert",
                     "alert-success",
@@ -70,7 +91,7 @@ function SetStudentStatus(){
                     "mb-3"
                 );
         }
-         teacher.innerText  = data.data.Attendanced_By?data.data.Attendanced_By:"Not Yet"
+         teacher.innerText  = data.data.Attendanced_By?`Attendanced By  ${data.data.Attendanced_By}`:"Not Yet"
     })
 }
 
@@ -79,3 +100,4 @@ function FetchStudentsStatus(){
         credentials:"include"
     }).then(res=>res.json())
 }
+

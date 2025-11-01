@@ -27,6 +27,14 @@ def Dashboard(role):
     return render_template(role_data)
 
 
+@app.route("/view/history")
+def Show_History():
+    return render_template("dashboard/history.html")
+
+
+@app.route('/view/profile')
+def Show_Profile():
+    return render_template("dashboard/profile.html")
 
 @app.route("/set-cookie" , methods=['POST'])
 def Set_Cookie():

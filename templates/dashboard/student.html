@@ -87,7 +87,8 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav ms-auto">
           <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link active" href="/view/history">View History</a>
+          <a class="nav-link active" href="/view/profile">Profile</a>
         </div>
       </div>
     </div>
@@ -98,10 +99,16 @@
       <div class="col-lg-10">
         <div class="text-center mb-4">
           <h1 class="display-5 fw-bold text-primary">Your Attendance Record</h1>
-          <p class="lead text-muted">Track your daily attendance record below 👇</p>
+          <p class="lead text-muted">Track your daily attendance record below</p>
         </div>
         
-        <div class="card shadow border-0 rounded-3 mb-5">
+        <div id="closed" style="display: none;">
+            <div class="alert alert-danger">
+                <h4>Today Attendance Session Was Closed</h4>
+                <p>By Admin <span id="admin-info"></span></p>
+            </div>
+        </div>
+        <div class="card shadow border-0 rounded-3 mb-5" id="sinfo">
           <div class="card-body p-4">
             <div class="row align-items-center">
               <div class="col-md-6 border-end-md">
@@ -144,25 +151,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body px-4 pb-4">
-        <form id="otpForm">
+       
           <div class="mb-3">
             <label for="otpInput" class="form-label text-muted">OTP Code</label>
-            <input type="number" id="oinp" class="form-control form-control-lg text-center fw-bold" maxlength="4" placeholder="Enter 4-digit OTP">
+            <input type="number" id="oinp" class="form-control form-control-lg text-center fw-bold" maxlength="5" placeholder="Enter 5-digit OTP">
           </div>
           <div class="d-grid">
             <button type="button" class="btn btn-primary btn-lg shadow-sm" id="submit-otp">Submit OTP</button>
           </div>
-        </form>
+        
       </div>
     </div>
   </div>
 </div>
 
+<footer class="text-center py-2 position-absolute bottom-0 w-100">
+  <p class="m-0" style="font-size: 16px;">Developed By <strong>NPRCET STUDENT</strong></p>
+</footer>
+
+
 <script src="{{url_for('static' , filename='js/student/checker.js')}}" type="module" defer></script>
 <script src="{{url_for('static' , filename='js/student/otp.js')}}" type="module" defer></script>
 
 <style>
-  /* Custom styling for form elements */
+
   select.form-select, 
   input.form-control {
     border: 1px solid #ced4da;
