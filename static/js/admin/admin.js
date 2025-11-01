@@ -1,4 +1,4 @@
-let API_BASE = "https://npr-bus-backend.vercel.app/"
+let API_BASE = "https://npr-bus-backend.vercel.app"
 let sotp = document.getElementById("sotp")
 
 function Formatedate(){

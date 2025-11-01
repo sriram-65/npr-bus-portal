@@ -1,4 +1,4 @@
-let API_BASE = "https://npr-bus-backend.vercel.app/"
+let API_BASE = "https://npr-bus-backend.vercel.app"
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
