@@ -82,15 +82,17 @@ const loadingQuotes = [
 
 
 function SetUser(data){
-    console.log(data)
+    
     if(data.Uid){
         if(!localStorage.getItem("uid")){
             localStorage.setItem("uid" , JSON.stringify(data.Uid))
         }
         if(data.Updated==true){
            askdeatils.style.display = 'none'
+           main.style.display  = 'block'
         }
         else{
+           main.style.display  = 'none'
            askdeatils.style.display = 'block'
             
         }
@@ -166,6 +168,7 @@ function ALLCHECK(){
      }
    })
     }
+     
    })
  
 }
