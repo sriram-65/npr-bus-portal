@@ -116,7 +116,7 @@ function ALLCHECK(){
         SetUser(response.data)
         load_student.style.display = 'none'
         document.querySelector("footer").style.display = 'none'
-        main.style.display = 'block'
+        
         localStorage.setItem("busno" , response.data.Bus_No)
     if(response.data.Updated==true){
          CheckPlaceholder().then(data=>{
