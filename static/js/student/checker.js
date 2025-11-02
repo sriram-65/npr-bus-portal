@@ -21,11 +21,11 @@ document.getElementById("logout").onclick = function(){
     document.getElementById("logout").disabled = true
     fetch(`${API_BASE}/api/logout` , {credentials:"include"}).then(res=>res.json()).then(data=>{
         if(data.Success==true){
-            window.location.reload = '/'
+            window.location.href = '/'
         }
         else{
             alert("Failed to Logout")
-    document.getElementById("logout").disabled = false
+             document.getElementById("logout").disabled = false
         }
     })
 }
@@ -113,6 +113,7 @@ function ALLCHECK(){
         }
         SetUser(response.data)
         load_student.style.display = 'none'
+        document.querySelector("footer").style.display = 'none'
         main.style.display = 'block'
         localStorage.setItem("busno" , response.data.Bus_No)
     if(response.data.Updated==true){
