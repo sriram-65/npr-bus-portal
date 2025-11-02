@@ -171,10 +171,10 @@
       <div class="info-value" id="phoneLinked"></div>
     </div> -->
 
-    <div class="info-card">
+    <!-- <div class="info-card">
       <div class="info-label">Account Created</div>
       <div class="info-value" id="createdAt"></div>
-    </div>
+    </div> -->
   </div>
 
   <div class="profile-footer">
@@ -226,7 +226,7 @@
     //     ? '<span class="verified">✔ Linked</span>'
     //     : '<span class="not-verified">✘ Not Linked</span>';
 
-      document.getElementById('createdAt').innerText = `${new Date(student.User_Created_at).getDay()}` + '/' + `${new Date(student.User_Created_at).getMonth()+1}`+ '/' +  `${new Date(student.User_Created_at).getFullYear()}` ;
+      // document.getElementById('createdAt').innerText = `${new Date(student.User_Created_at).getDay()}` + '/' + `${new Date(student.User_Created_at).getMonth()+1}`+ '/' +  `${new Date(student.User_Created_at).getFullYear()}` ;
       document.getElementById('updatedAt').innerText = student.Updated ? 'Yes ✅' : 'No ❌';
 
     } catch (error) {
