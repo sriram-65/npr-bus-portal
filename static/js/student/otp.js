@@ -54,6 +54,8 @@ function Send_Otp_code(){
               SetStudentStatus()
         }
         else{
+            eotp.innerText = 'Submit OTP'
+            eotp.disabled = false
             alert("Otp is Invalid")
         }
     })
