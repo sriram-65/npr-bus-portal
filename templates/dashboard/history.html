@@ -115,7 +115,7 @@
               <th>Status</th>
               <th>Bus No</th>
               <th>Attended By</th>
-              <th class="text-center">Actions</th>
+              <!-- <th class="text-center">Actions</th> -->
             </tr>
           </thead>
           <tbody id="historyTableBody"></tbody>
@@ -213,22 +213,18 @@
           <td>${statusBadge}</td>
           <td><span class="badge bg-light text-dark border">${record.busno}</span></td>
           <td>${attendBy}</td>
-          <td class="text-center">
-            <button class="btn btn-sm btn-outline-primary view-details" data-id="${record.id}">
-              <i class="fas fa-eye me-1"></i>Details
-            </button>
-          </td>
+         
         </tr>
       `;
       tableBody.insertAdjacentHTML('beforeend', row);
     });
     
-    document.querySelectorAll('.view-details').forEach(button => {
-      button.addEventListener('click', function() {
-        const recordId = this.getAttribute('data-id');
-        alert(`Viewing details for record ID: ${recordId}`);
-      });
-    });
+    // document.querySelectorAll('.view-details').forEach(button => {
+    //   button.addEventListener('click', function() {
+    //     const recordId = this.getAttribute('data-id');
+    //     alert(`Viewing details for record ID: ${recordId}`);
+    //   });
+    // });
   }   
 
   function setupSearchAndFilter() {
