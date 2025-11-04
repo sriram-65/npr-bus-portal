@@ -22,6 +22,8 @@ document.getElementById("logout").onclick = function(){
     fetch(`${API_BASE}/api/logout` , {credentials:"include"}).then(res=>res.json()).then(data=>{
         if(data.Success==true){
             window.location.href = '/'
+            localStorage.removeItem('uid');
+            localStorage.removeItem('busno')
         }
         else{
             alert("Failed to Logout")
