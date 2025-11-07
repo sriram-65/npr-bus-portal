@@ -64,8 +64,20 @@ function ALLCHECK(){
             sname.innerText = data.data._Name
             today.innerText = Formatedate()
         }
+        else{
+            Swal.fire({
+            icon: "error",
+            title: "Server Error",
+            text: `Pls try Again later`,
+            footer:"Enable or allow Third Party Cookie in Your Browsers Settings"
+            });
+
+            setTimeout(()=>{
+                window.location.href = '/'
+            } , 1800)
+        }
     })
-}
+}  
 
 function check_session(date){
    return fetch(`${API_BASE}/api/admin/check-session/${date}`).then(res=>res.json())
