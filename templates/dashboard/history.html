@@ -178,7 +178,7 @@
 
   function updateStats(records) {
     const totalRecords = records.length;
-    const presentCount = records.filter(record => record.otp_verfied).length;
+    const presentCount = records.filter(record => record.Started === 'f').length;
     const absentCount = totalRecords - presentCount;
     const attendanceRate = totalRecords > 0 ? Math.round((presentCount / totalRecords) * 100) : 0;
     
@@ -193,7 +193,10 @@
     tableBody.innerHTML = "";
 
     records.forEach((record) => {
-      const statusBadge = record.otp_verfied
+      // Check if Started is 'f' for present, otherwise absent
+      const isPresent = record.Started === 'f';
+      
+      const statusBadge = isPresent
         ? '<span class="badge bg-success rounded-pill"><i class="fas fa-check me-1"></i>Present</span>'
         : '<span class="badge bg-danger rounded-pill"><i class="fas fa-times me-1"></i>Absent</span>';
 
@@ -213,18 +216,10 @@
           <td>${statusBadge}</td>
           <td><span class="badge bg-light text-dark border">${record.busno}</span></td>
           <td>${attendBy}</td>
-         
         </tr>
       `;
       tableBody.insertAdjacentHTML('beforeend', row);
     });
-    
-    // document.querySelectorAll('.view-details').forEach(button => {
-    //   button.addEventListener('click', function() {
-    //     const recordId = this.getAttribute('data-id');
-    //     alert(`Viewing details for record ID: ${recordId}`);
-    //   });
-    // });
   }   
 
   function setupSearchAndFilter() {
@@ -253,9 +248,9 @@
     let filteredRecords = allRecords;
     
     if (filter === 'present') {
-      filteredRecords = filteredRecords.filter(record => record.otp_verfied);
+      filteredRecords = filteredRecords.filter(record => record.Started === 'f');
     } else if (filter === 'absent') {
-      filteredRecords = filteredRecords.filter(record => !record.otp_verfied);
+      filteredRecords = filteredRecords.filter(record => record.Started !== 'f');
     }
     
     if (searchTerm) {
