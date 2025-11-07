@@ -4,7 +4,7 @@ let askdeatils = document.getElementById("ask-deatils")
 
 let update = document.getElementById("update") 
 let PhoneNumber = document.getElementById("phone-number") 
-let ds = document.getElementById("ds") 
+let ds = document.getElementById("ds")
 let busno = document.getElementById("bus-no") 
 let gender = document.getElementById("gender") 
 let year = document.getElementById("year")
@@ -26,7 +26,7 @@ document.getElementById("logout").onclick = function(){
             localStorage.removeItem('busno')
         }
         else{
-            alert("Failed to Logout")
+             alert("Failed to Logout")
              document.getElementById("logout").disabled = false
         }
     })
@@ -109,10 +109,22 @@ function ALLCHECK(){
    
     Check_Me().then(response=>{
 
-         if(response.Success==false){
+        if(response.Success==false){
+             Swal.fire({
+            icon: "error",
+            title: "Server Error",
+            text: `Pls try Again later`,
+            footer:"Enable or allow Third Party Cookie in Your Browsers Settings"
+            });
+
+            setTimeout(()=>{
+                window.location.href = '/'
+                localStorage.clear()
+            } , 3300)
                 eotp.disabled = true
         }
         else{
+           
                 eotp.disabled= false
         }
         SetUser(response.data)
@@ -219,3 +231,4 @@ function Formatedate(){
     const formattedDate = `${day}-${month}-${year}`;
     return formattedDate
 }
+ 
