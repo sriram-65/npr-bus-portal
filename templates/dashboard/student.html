@@ -5,7 +5,7 @@
 <div class="load-student">
   <div class="container">
     <div class="icon text-center">
-   <i class="fa-solid fa-spinner fa-spin" style="font-size: 34px; color: #dee2e6;"></i>
+   <i class="fa-solid fa-spinner fa-spin" style="font-size: 34px; color: #dee2e6;" id="load-icon"></i>
          
     </div>
    <br>
@@ -167,9 +167,10 @@
 </div>
 
 <footer class="text-center py-2 position-absolute bottom-0 w-100">
-   <p class="m-0" style="font-size: 16px;">Developed By <strong>N.G SRIRAM </strong> <small>Student @ NPRCET</small></p>
+  <p class="m-0" style="font-size: 16px;">Developed By <strong>N.G SRIRAM </strong> <small>Student @ NPRCET</small></p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="{{url_for('static' , filename='js/student/checker.js')}}" type="module" defer></script>
 <script src="{{url_for('static' , filename='js/student/otp.js')}}" type="module" defer></script>
