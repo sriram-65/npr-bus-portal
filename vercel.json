@@ -12,12 +12,6 @@
     }
   ],
   
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "https://npr-bus-backend.vercel.app/api/$1"
-    }
-  ]
 
 
 }
